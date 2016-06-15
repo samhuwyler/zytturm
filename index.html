@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Pfadi Zytturm</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+
+    <link href="style.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+    <script type="text/javascript">
+        
+        var dontMove = false;       
+        var anschlagShown = false;
+        var stufenShown = false;
+        
+        function get(id)
+        {
+            return document.getElementById(id);
+        }
+        
+        function coverAway()
+        {
+            if(!dontMove)
+            {
+                document.getElementById("startCover").style.top = "-100%";
+            }
+            
+            if(anschlagShown)
+            {
+                get("anschlag").style.opacity="0";
+                dontMove = false;
+            }
+        }
+        
+        function showAnschlag()
+        {
+            dontMove = true;
+            document.getElementById("anschlag").style.opacity = "1";
+            setTimeout(function(){ anschlagShown = true }, 500);
+        }
+        
+        function menuClick(whereTo)
+        {
+            switch(whereTo)
+            {
+                case "home":
+                    break;
+                case "about":
+                    break;
+                case "stufen":
+                    showStufen();
+                    break;
+                case "kontakt":
+                    break;
+            }
+        }
+        
+        function showStufen()
+        {
+            get("mStufen").style.top="50px";
+        }
+        
+    </script>
+
+    <div id="startCover" onclick="coverAway()">
+         <!--video autoplay>
+            <source src="cover.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video--> 
+        <div id="zytturmLogoCover">    
+        </div>
+        
+        <div id="anschlagButton" onclick="showAnschlag()">
+            anschlag
+        </div>
+        
+        <div id="anschlag"></div>
+      
+    </div>
+    
+    
+    <div id="container">
+        <div id="header">
+            <div id="menu">
+                <div class="mp" onclick="menuClick('home')">HOME</div>
+                <div class="mp" onclick="menuClick('about')">&Uuml;BER UNS</div>
+                <div class="mp" onclick="menuClick('stufen')">STUFEN</div>
+                <div class="mp" onclick="menuClick('kontakt')">KONTAKT</div>
+            </div>
+            <div id="mStufen">
+                <div class="smp">BIEBER</div>
+                <div class="smp">W&Ouml;LFE</div>
+                <div class="smp">PFADI</div>
+                <div class="smp">PIOS</div>
+                <div class="smp">ROVER</div>
+            </div>
+        </div>
+        
+        <div id="logoleft"></div>
+        
+        <div id="content">
+            
+        </div>           
+    </div>
+    
+</body>
+</html>
